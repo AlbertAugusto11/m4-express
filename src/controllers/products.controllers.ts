@@ -22,6 +22,15 @@ export class ProductsControllers{
 
         return res.status(204).send("Item Excluido com sucesso");
     }
+
+    updateProduct(req: Request, res: Response): Response{
+        const index = productsDatabase.findIndex(product => product.id === Number(req.params.id))
+        const newProduct: IProduct = {id: Number(req.params.id), name: req.body.name, price: req.body.price}
+
+        productsDatabase.splice(index,1,newProduct)
+
+        return res.status(201).json({...newProduct,mensage:"Produto Atualizado com Sucesso"})
+    }
 }
 
 export class UsersControllers {

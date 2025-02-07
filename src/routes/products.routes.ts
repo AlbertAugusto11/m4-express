@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ProductsControllers, UsersControllers } from "../controllers/products.controllers";
+import { IsProductsIdValid } from "../middleware/products.middleware";
 
 export const productsRouter = Router();
 
@@ -9,7 +10,9 @@ productsRouter.get("/", productsControllers.getProducts);
 
 productsRouter.post("/", productsControllers.createProduct);
 
-productsRouter.delete("/:id", productsControllers.deleteProduct);
+productsRouter.delete("/:id", IsProductsIdValid.execute, productsControllers.deleteProduct);
+
+productsRouter.patch("/:id", IsProductsIdValid.execute, productsControllers.updateProduct)
 
 export const usersRouter = Router();
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { IProduct } from "../interfaces/products.interfaces";
-import { generateId, productsDatabase } from "../database/database";
+import { IProduct, IUser } from "../interfaces/products.interfaces";
+import { generateId, productsDatabase, usersDataBese } from "../database/database";
 
 export class ProductsControllers{
     getProducts(req: Request, res: Response): Response{
@@ -21,5 +21,18 @@ export class ProductsControllers{
         productsDatabase.splice(index, 1);
 
         return res.status(204).send("Item Excluido com sucesso");
+    }
+}
+
+export class UsersControllers {
+    addUser (req: Request, res: Response): Response {
+        let newUser: IUser = { id: generateId(), name: req.body.name, email: req.body.email }
+        usersDataBese.push(newUser)
+        let userOk = {...newUser, mensage: "Usuário Criado com Sucesso"}
+
+        return res.status(201).json(userOk)
+    }
+    getUsers (req: Request, res: Response): Response {
+        return res.status(200).json(usersDataBese)
     }
 }

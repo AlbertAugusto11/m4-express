@@ -1,6 +1,7 @@
-import { IProduct } from "../interfaces/products.interfaces";
+import { IProduct, IUser } from "../interfaces/products.interfaces";
 
 export const productsDatabase: IProduct[] = [];
+export const usersDataBese: IUser[] = [];
 
 let id = 0;
 

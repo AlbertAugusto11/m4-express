@@ -1,11 +1,12 @@
 import express, { json, Request, Response } from "express";
-import { productsRouter } from "./routes/products.routes";
+import { productsRouter, usersRouter } from "./routes/products.routes";
 
 const app = express();
 
 app.use(json());
 
 app.use("/products", productsRouter);
+app.use("/users", usersRouter);
 
 const port = 5173;
 

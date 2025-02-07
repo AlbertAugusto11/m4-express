@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ProductsControllers } from "../controllers/products.controllers";
+import { ProductsControllers, UsersControllers } from "../controllers/products.controllers";
 
 export const productsRouter = Router();
 
@@ -10,3 +10,10 @@ productsRouter.get("/", productsControllers.getProducts);
 productsRouter.post("/", productsControllers.createProduct);
 
 productsRouter.delete("/:id", productsControllers.deleteProduct);
+
+export const usersRouter = Router();
+
+const usersControllers = new UsersControllers();
+
+usersRouter.post("/", usersControllers.addUser)
+usersRouter.get("/", usersControllers.getUsers)

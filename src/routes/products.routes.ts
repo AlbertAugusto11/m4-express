@@ -18,5 +18,5 @@ export const usersRouter = Router();
 
 const usersControllers = new UsersControllers();
 
-usersRouter.post("/", usersControllers.addUser)
+usersRouter.post("/", IsProductsIdValid.execute, usersControllers.addUser)
 usersRouter.get("/", usersControllers.getUsers)

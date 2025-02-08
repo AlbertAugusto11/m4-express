@@ -4,7 +4,11 @@ import { generateId, productsDatabase, usersDataBese } from "../database/databas
 
 export class ProductsControllers{
     getProducts(req: Request, res: Response): Response{
-        return res.status(200).json(productsDatabase);
+        if(productsDatabase.length == 0){    
+            return res.status(200).json({menssge: "A lista está vazia", productsDatabase})
+        }else{
+            return res.status(200).json(productsDatabase)
+        }
     }
 
     createProduct(req: Request, res: Response): Response{
@@ -19,8 +23,7 @@ export class ProductsControllers{
         const index = productsDatabase.findIndex(product => product.id === Number(req.params.id));
 
         productsDatabase.splice(index, 1);
-
-        return res.status(204).send("Item Excluido com sucesso");
+        return res.status(200).json({menssage:"Item Excluido com sucesso"});
     }
 
     updateProduct(req: Request, res: Response): Response{

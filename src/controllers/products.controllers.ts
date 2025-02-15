@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ProductsServices } from "../services/products.services";
 
-export class ProductsControllers{
+export class ProductsControllers {
     getProducts(req: Request, res: Response): Response{
         const productsService = new ProductsServices();
 

@@ -1,6 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { productsDatabase } from "../database/database";
-import { AppError } from "../errors/AppError";
 import { createProductValid } from "../schemasZod/createProductValid";
 
 export class IsProductCreateValid{

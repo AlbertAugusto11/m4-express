@@ -9,3 +9,7 @@ const schemaMod = createProductBodySchema.partial()
 const schemaMod2 = createProductBodySchema.omit({price:true})
 const schemaMod3 = createProductBodySchema.pick({price:true})
 // Estas são formas de usar o Pick, Omit, Partial na bibliotece ZOD
+
+
+type TProduct = z.infer<typeof createProductBodySchema>
+// Criando tipo atraves do Zod Infer

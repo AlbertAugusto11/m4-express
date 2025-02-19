@@ -12,4 +12,4 @@ const schemaMod3 = createProductBodySchema.pick({price:true})
 
 
 type TProduct = z.infer<typeof createProductBodySchema>
-// Criando tipo atraves do Zod Infer
+// Criando Tipo atraves do Zod Infer

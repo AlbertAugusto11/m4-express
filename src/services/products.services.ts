@@ -20,6 +20,14 @@ export class ProductsServices{
         return newProduct;
     }
 
+    updateProduct(id: string, body: IProduct) {
+        const findIndex = productsDatabase.findIndex(element => element.id === Number(id))
+        productsDatabase.splice(findIndex,1,{...body, id: Number(id)})
+        const newProduct = productsDatabase[findIndex]
+
+        return newProduct
+    }
+
     deleteProduct(id: string){
         const index = productsDatabase.findIndex(product => product.id === Number(id));
 

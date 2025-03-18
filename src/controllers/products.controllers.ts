@@ -26,6 +26,14 @@ export class ProductsControllers{
         return res.status(201).json(response);
     }
 
+    updateProduct(req: Request, res: Response): Response {
+        const productsService = new ProductsServices()
+
+        const response = productsService.updateProduct(req.params.id, req.body)
+
+        return res.status(201).json(response)
+    }
+
     deleteProduct(req: Request, res: Response): Response{
         const productsService = new ProductsServices();
        

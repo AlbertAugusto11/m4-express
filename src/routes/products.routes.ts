@@ -15,3 +15,5 @@ productsRouter.get("/:id", IsProductIdValid.execute, productsControllers.getOneP
 productsRouter.post("/", ValidateBody.execute({ body: createProductBodySchema }), productsControllers.createProduct);
 
 productsRouter.delete("/:id", IsProductIdValid.execute, productsControllers.deleteProduct);
+
+productsRouter.put("/:id",IsProductIdValid.execute, ValidateBody.execute({body: createProductBodySchema}), productsControllers.updateProduct);

@@ -1,15 +1,25 @@
-import express, { json, Request, Response } from "express";
-import { productsRouter, usersRouter } from "./routes/products.routes";
+import "reflect-metadata";
+import "express-async-errors";
+import "dotenv/config";
+import express, { json } from "express";
+import helmet from "helmet";
+import cors from "cors";
+import { opportunityRouter } from "./routes/opportunity.routes";
+import { HandleErrors } from "./middlewares/handleErrors.middleware";
+import { userRouter } from "./routes/user.routes";
 
-const app = express();
+export const app = express();
+
+console.log(process.env.VAR_AMBIENTE);
+
+app.use(cors());
+
+app.use(helmet());
 
 app.use(json());
 
-app.use("/products", productsRouter);
-app.use("/users", usersRouter);
+app.use("/opportunities", opportunityRouter);
 
-const port = 5173;
+app.use("/users", userRouter);
 
-app.listen(port, () => {
-    console.log(`API sucessfully started on port ${port}`);
-})
+app.use(HandleErrors.execute);
